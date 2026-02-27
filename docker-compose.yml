@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres
+    container_name: banking_database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    volumes:
+      - ./database.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - dev
+
+networks:
+  dev:
+    driver: bridge
